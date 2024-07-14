@@ -1,0 +1,18 @@
+{
+    "emptyCredentials": {
+      "username": "",
+      "password": "",
+      "errorMessage": "Username is required"
+    },
+    "usernameOnly": {
+      "username": "standard_user",
+      "password": "",
+      "errorMessage": "Password is required"
+    },
+    "validCredentials": {
+      "username": "standard_user",
+      "password": "secret_sauce",
+      "expectedTitle": "Swag Labs"
+    }
+  }
+    
