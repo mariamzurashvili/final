@@ -12,17 +12,28 @@ describe('Login Form Tests', () => {
     const { username, password, expectedErrorMessage, expectedTitle } = testData[testCase];
 
     it(`UC-${testCase}: Test Login form - ${testCase}`, async () => {
-      await HomePage.login(username, password);
+      // Fill the username and password fields
+      await HomePage.setUsername(username);
+      await HomePage.setPassword(password);
 
-      if (username === '' && password === '') {
+      // Check if the fields contain the entered values
+      const enteredUsername = await HomePage.getUsernameValue();
+      const enteredPassword = await HomePage.getPasswordValue();
+      assert.strictEqual(enteredUsername, username, `Username field should contain "${username}"`);
+      assert.strictEqual(enteredPassword, password, `Password field should contain "${password}"`);
+
+      // Clear the fields based on the scenario
+      if (testCase === 'emptyCredentials') {
         await HomePage.clearUsername();
         await HomePage.clearPassword();
-      } else if (password === '') {
+      } else if (testCase === 'usernameOnly') {
         await HomePage.clearPassword();
       }
 
+      // Click the login button
       await HomePage.clickLogin();
 
+      // Verify the expected outcomes
       if (expectedErrorMessage) {
         const errorMessage = await HomePage.getErrorMessage();
         assert(errorMessage.includes(expectedErrorMessage), `Expected error message: "${expectedErrorMessage}"`);

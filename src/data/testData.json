@@ -1,12 +1,12 @@
 {
     "emptyCredentials": {
-      "username": "",
-      "password": "",
+      "username": "name1",
+      "password": "pass1",
       "errorMessage": "Username is required"
     },
     "usernameOnly": {
-      "username": "standard_user",
-      "password": "",
+      "username": "name2",
+      "password": "pass2",
       "errorMessage": "Password is required"
     },
     "validCredentials": {

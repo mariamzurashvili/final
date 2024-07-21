@@ -4,8 +4,11 @@ class HomePage {
     get loginButton() { return $('//input[@id="login-button"]'); }
     get errorMessage() { return $('//div[@class="error-message-container"]'); }
   
-    async login(username, password) {
+    async setUsername(username) {
       await this.usernameInput.setValue(username);
+    }
+  
+    async setPassword(password) {
       await this.passwordInput.setValue(password);
     }
   
@@ -22,7 +25,15 @@ class HomePage {
     }
   
     async getErrorMessage() {
-      return (await this.errorMessage).getText();
+      return await this.errorMessage.getText();
+    }
+  
+    async getUsernameValue() {
+      return await this.usernameInput.getValue();
+    }
+  
+    async getPasswordValue() {
+      return await this.passwordInput.getValue();
     }
   }
   
